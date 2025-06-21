@@ -10,6 +10,12 @@ module.exports = (app) => {
         [authJWt.verifyToken],
         cameraController.addCamera
     );
+
+      app.post(
+        "/upload_camera_excel",
+        [authJWt.verifyToken, upload.single("file")],
+        cameraController.bulkUploadCameraExcel
+    );
 };
 
 const upload = multer({
@@ -22,10 +28,3 @@ const upload = multer({
         cb(null, true);
     }
 });
-module.exports = (app) => {
-    app.post(
-        "/upload_camera_excel",
-        [authJWt.verifyToken, upload.single("file")],
-        cameraController.bulkUploadCameraExcel
-    );
-};
