@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+app.set('trust proxy', true);
 const sequelizeMiddleware = require('./src/middlewares/sequelize.js')
 const authMiddleware = require('./src/middlewares/auth.js')
 
